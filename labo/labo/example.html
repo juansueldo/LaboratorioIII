@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/index.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="#">
+        <label for="txtNombre">Nombre:</label>
+        <input type="text" name="nombre" id="txtNombre">
+        <label for="txtEmail">Email:</label>
+        <input type="email" name="email" id="txtEmail" title="email">
+        <label for="txtEdad">Edad:</label>
+        <input type="number" name="edad" id="txtEdad" min="18" max="65" value="20">
+        <input type="range" name="edad2" id="txtEdad2" min="18" max="65" value="60">
+        <input type="color" name="color" id="txtColor">
+        
+        <fieldset>
+            <legend>Deportes</legend>
+            <input type="checkbox" name="deporte" value="Futbol" checked id="">Futbol<br/>
+            <input type="checkbox" name="deporte" value="Tenis" id="">Tenis<br/>
+            <input type="checkbox" name="deporte" value="Golf" id="">Golf<br/>
+        </fieldset>
+
+        <fieldset>
+            <legend>Genero</legend>
+            <input type="radio" name="genero" value="M" id="">Masculino<br/>
+            <input type="radio" name="genero" value="F" id="">Femenino<br/>
+        </fieldset>
+        <input type="radio" name="" id="">
+        
+
+        <input type="file" name="" id=""> 
+        <input type="submit" value="Alta persona">
+        <select name="" id="">
+            <option value="quilmes">Quilmes</option>
+            <option value="avellaneda">Avellaneda</option>
+            <option value="bernal">Benal</option>
+            <option value="lanus">Lanus</option>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </select>
+    </form>
+    <button id="btnClick">Clickme</button>
+</body>
+</html>
