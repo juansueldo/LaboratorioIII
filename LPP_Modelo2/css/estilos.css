@@ -35,6 +35,10 @@ input {
 .cancelar {
   background-color: #1153f6;
 }
+fieldset{
+  left: 0;
+  right: 0;
+}
 table {
   width: 80%;
   border-collapse: collapse;
@@ -82,4 +86,7 @@ tr{
 
 .hidden, .hidden-btn{
   display: none; /* clase para ocultar el spinner */
+}
+.headRow{
+  background-color: #FF0000;
 }
