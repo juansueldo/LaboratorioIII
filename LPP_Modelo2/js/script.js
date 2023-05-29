@@ -1,4 +1,4 @@
-import { Anuncio,ValidarNro } from "./anuncio.js";
+import { Anuncio,ValidarNro,ValidarFloat } from "./anuncio.js";
 import { actualizarTabla } from "./tabla.js";
 
 const anuncios = JSON.parse(localStorage.getItem("anuncios")) || [];
@@ -23,9 +23,7 @@ window.addEventListener("click", (e)=>{
         handlerDelete(id)
     }
     else if(e.target.matches("input[value='Cancelar']")){
-        $button.classList.add("hidden-btn");
-        $buttonCancel.classList.add("hidden-btn");
-        $formulario.reset();
+        resetFormulario();
     }
 });
 
@@ -36,23 +34,27 @@ $formulario.addEventListener("submit", (e)=>{
 
     if(txtId.value === ""){
         console.log("carga...");
-        if(ValidarNro(txtCantidadAutos.value)){
+        if(ValidarNro(txtCantidadBanos.value) && ValidarNro(txtCantidadAutos.value) && ValidarNro(txtCantidadDormitorios.value) && ValidarFloat(txtPrecio.value) && txtTitulo.value !== "" && txtDescripcion.value !== ""){
             const newAnuncio = new Anuncio(Date.now(), txtTitulo.value,rdoVenta.value,txtDescripcion.value, parseFloat(txtPrecio.value),parseInt(txtCantidadBanos.value), parseInt(txtCantidadAutos.value),parseInt(txtCantidadDormitorios.value));
             handlerCreate(newAnuncio);
+            resetFormulario();
         }
         else{
-            alert("Error");
-        }
+            alert("Ingrese datos validos");
+        }  
     }
     else{
         console.log("modificacion...");
-        const updateAnuncio = new Anuncio(parseInt(txtId.value),txtTitulo.value,rdoVenta.value,txtDescripcion.value, parseFloat(txtPrecio.value),parseInt(txtCantidadBanos.value), parseInt(txtCantidadAutos.value),parseInt(txtCantidadDormitorios.value));
-        handlerUpdate(updateAnuncio);
+        if(ValidarNro(txtCantidadBanos.value) && ValidarNro(txtCantidadAutos.value) && ValidarNro(txtCantidadDormitorios.value) && ValidarFloat(txtPrecio.value) && txtTitulo.value !== "" && txtDescripcion.value !== ""){
+            const updateAnuncio = new Anuncio(parseInt(txtId.value),txtTitulo.value,rdoVenta.value,txtDescripcion.value, parseFloat(txtPrecio.value),parseInt(txtCantidadBanos.value), parseInt(txtCantidadAutos.value),parseInt(txtCantidadDormitorios.value));
+            handlerUpdate(updateAnuncio);
+            resetFormulario();
+        }
+        else{
+            alert("Ingrese datos validos, no se modifico el anuncio");
+        }
     }
-    $formulario.reset();
-    $button.classList.add("hidden-btn");
-    $buttonCancel.classList.add("hidden-btn");
-    $titulo.textContent = "Llena el formulario de Alta";
+    
 
 });
 
@@ -72,10 +74,7 @@ function handlerDelete(id){
     anuncios.splice(index, 1);
     actualizarStorage("anuncios", anuncios);
     actualizarTabla($seccionTabla, anuncios); 
-    $formulario.reset();
-    $button.classList.add("hidden-btn");
-    $buttonCancel.classList.add("hidden-btn");
-    $titulo.textContent = "Llena el formulario de Alta";
+    resetFormulario();
 }
 function actualizarStorage(clave, data){
     localStorage.setItem(clave, JSON.stringify(data));
@@ -89,4 +88,10 @@ function cargarFormulario(formulario, anuncio){
     formulario.txtCantidadBanos.value = anuncio.banios;
     formulario.txtCantidadAutos.value = anuncio.autos;
     formulario.txtCantidadDormitorios.value = anuncio.dormitorios;
+}
+function resetFormulario(){
+    $button.classList.add("hidden-btn");
+    $buttonCancel.classList.add("hidden-btn");
+    $titulo.textContent = "Llena el formulario de Alta";
+    $formulario.reset();
 }
