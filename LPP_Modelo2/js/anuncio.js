@@ -9,9 +9,24 @@ export function Anuncio(id, titulo, transaccion, descripcion, precio, banios, au
     this.dormitorios = dormitorios;
 } 
 export function ValidarNro(numero){
-    var retorno = false;
-    if (typeof numero === 'number' && isNaN(numero)) {
+    var retorno;
+    let numeroValido = parseInt(numero);
+    if (typeof numeroValido === 'number' && !isNaN(numeroValido)) {
         retorno = true;
     }
-    return retorno; 
+    else{
+        retorno = false;
+    }
+    return retorno;
+}
+export function ValidarFloat(numero){
+    var retorno;
+    let numeroValido = parseFloat(numero);
+    if (typeof numeroValido === 'number' && !isNaN(numeroValido)) {
+        retorno = true;
+    }
+    else{
+        retorno = false;
+    }
+    return retorno;
 }
