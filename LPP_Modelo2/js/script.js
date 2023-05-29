@@ -5,6 +5,7 @@ const anuncios = JSON.parse(localStorage.getItem("anuncios")) || [];
 const $seccionTabla = document.getElementById("tabla");
 const $formulario = document.forms[0];
 const $button = document.getElementById("button");
+const $buttonCancel = document.getElementById("button-cancel");
 const $titulo = document.getElementById("titulo");
 
 
@@ -14,11 +15,17 @@ window.addEventListener("click", (e)=>{
         const selectedAnuncio = anuncios.find(per => per.id == idAnuncio);
         cargarFormulario($formulario, selectedAnuncio);
         $button.classList.remove("hidden-btn");
+        $buttonCancel.classList.remove("hidden-btn");
         $titulo.textContent = "Modificar/Eliminar anuncio";
     }
     else if(e.target.matches("input[value='Eliminar']")){
         const id = parseInt($formulario.txtId.value);
         handlerDelete(id)
+    }
+    else if(e.target.matches("input[value='Cancelar']")){
+        $button.classList.add("hidden-btn");
+        $buttonCancel.classList.add("hidden-btn");
+        $formulario.reset();
     }
 });
 
@@ -39,6 +46,7 @@ $formulario.addEventListener("submit", (e)=>{
     }
     $formulario.reset();
     $button.classList.add("hidden-btn");
+    $buttonCancel.classList.add("hidden-btn");
     $titulo.textContent = "Llena el formulario de Alta";
 
 });
@@ -61,6 +69,7 @@ function handlerDelete(id){
     actualizarTabla($seccionTabla, anuncios); 
     $formulario.reset();
     $button.classList.add("hidden-btn");
+    $buttonCancel.classList.add("hidden-btn");
     $titulo.textContent = "Llena el formulario de Alta";
 }
 function actualizarStorage(clave, data){
