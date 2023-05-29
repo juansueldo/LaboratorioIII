@@ -54,6 +54,9 @@ td {
 tr:hover {
   opacity: 0.8;
 }
+tr{
+    cursor: pointer;
+}
 .rowPar {
   background-color: #161313;
   color: #fff;

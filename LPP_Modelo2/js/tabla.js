@@ -13,7 +13,7 @@ const crearTabla = (data, colorCabecera)=>{
         tabla.appendChild(crearCuerpo(data));
 
         ocultarSpinner();
-  }, 1200); // Tiempo de carga simulado (2 segundos)
+  }, 1000); // Tiempo de carga simulado (2 segundos)
 
     }
 
@@ -49,6 +49,7 @@ const crearCuerpo = (data)=>{
         for (const key in element) {
             if(key === "id"){
                 tr.dataset.id = element[key]; //A traves de la propiedad
+                
                 // a traves del metodo tr.setAttribute("data-id", element[key]);
             }
             else{
@@ -57,6 +58,9 @@ const crearCuerpo = (data)=>{
                 }
                 const td = document.createElement("td");
                 //De esta manera se crean mas manejadores de eventos td.addEventListener("click", handlerClickTd);
+                if(key === "precio"){
+                    td.textContent = `$" ${element[key]}`;
+                }
                 td.textContent = element[key];
                 tr.appendChild(td);
             }
@@ -80,5 +84,5 @@ export const actualizarTabla = (contenedor, data) =>{
     while(contenedor.hasChildNodes()){
         contenedor.removeChild(contenedor.firstElementChild);
     }
-    contenedor.appendChild(crearTabla(data, "red"));
+    contenedor.appendChild(crearTabla(data, "#FF0000"));
 }

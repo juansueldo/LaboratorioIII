@@ -1,4 +1,4 @@
-import { Anuncio } from "./anuncio.js";
+import { Anuncio,ValidarNro } from "./anuncio.js";
 import { actualizarTabla } from "./tabla.js";
 
 const anuncios = JSON.parse(localStorage.getItem("anuncios")) || [];
@@ -36,8 +36,13 @@ $formulario.addEventListener("submit", (e)=>{
 
     if(txtId.value === ""){
         console.log("carga...");
-        const newAnuncio = new Anuncio(Date.now(), txtTitulo.value,rdoVenta.value,txtDescripcion.value, parseFloat(txtPrecio.value),parseInt(txtCantidadBanos.value), parseInt(txtCantidadAutos.value),parseInt(txtCantidadDormitorios.value));
-        handlerCreate(newAnuncio);
+        if(ValidarNro(txtCantidadAutos.value)){
+            const newAnuncio = new Anuncio(Date.now(), txtTitulo.value,rdoVenta.value,txtDescripcion.value, parseFloat(txtPrecio.value),parseInt(txtCantidadBanos.value), parseInt(txtCantidadAutos.value),parseInt(txtCantidadDormitorios.value));
+            handlerCreate(newAnuncio);
+        }
+        else{
+            alert("Error");
+        }
     }
     else{
         console.log("modificacion...");
