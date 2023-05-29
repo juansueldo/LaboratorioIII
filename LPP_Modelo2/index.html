@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Anuncios</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Bienes Raices</h1>
+    </header>
+    <main>
+        <section class="seccion-formulario">
+            <h2 id="titulo">Llena el formulario de Alta</h2>
+            <form>
+                <fieldset>
+                    <input type="text" name="txtId" hidden>
+                    <legend>Informacion Del Anuncio</legend>
+                    <p><label for="">TITULO:</label></p>
+                    <p><input type="text" name="txtTitulo" placeholder="Titulo"></p>
+                    <p><label for="">TRANSACCION:</label></p>
+                    <p>VENTA<input type="radio" name="rdoVenta" value="Venta" id=""></p>
+                    <p>ALQUILER<input type="radio" name="rdoVenta" value="Alquiler" id=""></p>
+                    <p><label for="">DESCRIPCION:</label></p>
+                    <p><input type="text" name="txtDescripcion" placeholder="Descripcion"></p>
+                    <p><label for="">PRECIO:</label></p>
+                    <p><input type="text" name="txtPrecio" placeholder="Precio"></p>
+                    <p><label for="">CANTIDAD DE BAÑOS:</label></p>
+                    <p><input type="text" name="txtCantidadBanos" placeholder="Baños"></p>
+                    <p><label for="">CANTIDAD DE AUTOS:</label></p>
+                    <p><input type="text" name="txtCantidadAutos" placeholder="Autos"></p>
+                    <p><label for="">CANTIDAD DE DORMITORIOS:</label></p>
+                    <p><input type="text" name="txtCantidadDormitorios" placeholder="Dormitorios"></p>
+                </fieldset>
+                <div class="container">
+                    <input type="submit" value="Guardar" class="guardar boton">
+                    <input type="button" value="Eliminar" class="eliminar boton hidden-btn" id="button">
+                    <input type="button" value="Cancelar" class="cancelar boton hidden-btn" id="button">
+                </div>
+            </form>
+        </section>
+        <section class="seccion-tabla">
+            <h2>Lista de personas</h2>
+            <div id="spinner" class="spinner"></div>
+            <div id="tabla"></div>
+        </section>
+    </main>
+    <script src="./js/script.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curd Personas</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Crud Personas</h1>
+    </header>
+    <main>
+        <section class="seccion-formulario">
+            <h2 id="titulo">Alta Persona</h2>
+            <form>
+                <input type="text" name="txtId" hidden >
+                <input type="text" name="txtNombre" placeholder="Ingrese nombre" autocomplete="off">
+                <input type="email" name="txtEmail" placeholder="Ingrese su email" autocomplete="off">
+                <input type="number" name="txtEdad" min="18" max="65" value="18">
+
+                <fieldset>
+                    <legend>Genero</legend>
+                    <input type="radio" name="rdoGenero" value="Famale" checked>Famale<br>
+                    <input type="radio" name="rdoGenero" value="Male">Male<br>
+                </fieldset>
+                <input type="submit" value="Alta Persona">
+                <input type="button" value="Eliminar Persona" id="button" class="button">
+                <!--<input type="hidden" name="txtId">-->
+            </form>
+        </section>
+        <section class="seccion-tabla">
+            <h2>Lista de personas</h2>
+            <div id="tabla"></div>
+        </section>
+    </main>
+    <script src="./js/script.js" type="module"></script>
+</body>
+</html>
