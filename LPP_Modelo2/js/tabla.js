@@ -1,7 +1,7 @@
 const $spinner = document.getElementById("spinner");
 ocultarSpinner();
 
-const crearTabla = (data, colorCabecera)=>{
+const crearTabla = (data)=>{
     const tabla = document.createElement("table");
     // es comun en javascript: if(!Array.isArray(data)) return null;
     if(Array.isArray(data)){
@@ -9,7 +9,7 @@ const crearTabla = (data, colorCabecera)=>{
 
     // Simular una carga de datos
     setTimeout(function() {
-        tabla.appendChild(crearCabecera(data[0]), colorCabecera);
+        tabla.appendChild(crearCabecera(data[0]));
         tabla.appendChild(crearCuerpo(data));
 
         ocultarSpinner();
@@ -20,12 +20,11 @@ const crearTabla = (data, colorCabecera)=>{
     return tabla;
 }
 
-const crearCabecera = (elemento, color)=>{
+const crearCabecera = (elemento)=>{
     
     const tHead = document.createElement("thead"),
     headRow = document.createElement("tr");
-    headRow.style.setProperty("background-color", color);
-
+    headRow.classList.add("headRow");
     for (const key in elemento) {
         const th = document.createElement("th");
         //texto = document.createTextNode(key);
@@ -59,9 +58,12 @@ const crearCuerpo = (data)=>{
                 const td = document.createElement("td");
                 //De esta manera se crean mas manejadores de eventos td.addEventListener("click", handlerClickTd);
                 if(key === "precio"){
-                    td.textContent = `$" ${element[key]}`;
+                    td.textContent = '$' + element[key];
                 }
-                td.textContent = element[key];
+                else{
+                    td.textContent = element[key];
+                }
+                
                 tr.appendChild(td);
             }
         }
@@ -84,5 +86,5 @@ export const actualizarTabla = (contenedor, data) =>{
     while(contenedor.hasChildNodes()){
         contenedor.removeChild(contenedor.firstElementChild);
     }
-    contenedor.appendChild(crearTabla(data, "#FF0000"));
+    contenedor.appendChild(crearTabla(data));
 }
